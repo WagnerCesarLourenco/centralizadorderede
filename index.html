@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Telecom - Links Rápidos</title>
+    <style>
+        /* Estilos Gerais */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: #e6f1ff;
+            background-color: #030a16;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Container do Vídeo de Fundo */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* Filtro escuro sobre o vídeo para dar leitura */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(10, 25, 47, 0.75), rgba(10, 25, 47, 0.85));
+            z-index: -1;
+        }
+
+        /* Topo do Site */
+        header {
+            background-color: rgba(2, 12, 27, 0.85);
+            border-bottom: 2px solid #00b4d8;
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            color: #00b4d8;
+            text-shadow: 0 0 10px rgba(0, 180, 216, 0.5);
+        }
+
+        /* Efeito Vagalume Neon Azul no Parágrafo */
+        header p {
+            margin: 0.5rem 0 0 0;
+            font-size: 1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            /* Inicia a animação de brilho infinito que dura 3 segundos */
+            animation: vagalumeNeon 3s infinite ease-in-out;
+        }
+
+        /* Regras do efeito de piscar suave do vagalume (Versão Azul) */
+        @keyframes vagalumeNeon {
+            0%, 100% {
+                color: #8892b0; /* Cor padrão mais apagada */
+                text-shadow: 0 0 4px rgba(0, 180, 216, 0.2);
+            }
+            50% {
+                color: #ffffff; /* Letra acende em branco no pico do brilho */
+                text-shadow: 
+                    0 0 4px #fff,
+                    0 0 10px #00b4d8,
+                    0 0 20px #00b4d8,
+                    0 0 35px #00b4d8;
+            }
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem;
+            flex: 1;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: rgba(2, 12, 27, 0.7);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 180, 216, 0.25);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Lista de Links */
+        .vitrine-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        /* Item da Lista */
+        .linha-link {
+            background-color: rgba(21, 29, 69, 0.75);
+            border-radius: 6px;
+            border-left: 26px solid #00b4d8;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s ease-in-out;
+            border-top: 1px solid rgba(0, 180, 216, 0.1);
+            border-right: 1px solid rgba(0, 180, 216, 0.1);
+            border-bottom: 1px solid rgba(0, 180, 216, 0.1);
+        }
+
+        .linha-link:hover {
+            transform: translateX(8px);
+            background-color: rgba(23, 42, 69, 0.95);
+            border-left-color: #008000;
+            box-shadow: 0 0 25px rgba(0, 180, 216, 0.4);
+        }
+
+        .link-title {
+            font-size: 1.2rem;
+            margin: 0;
+            color: #ccd6f6;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Botão de Acesso */
+        .link-btn {
+            display: inline-block;
+            background-color: transparent;
+            color: #00b4d8;
+            text-decoration: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+            border: 2px solid #00b4d8;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .link-btn:hover {
+            background-color: #00b4d8;
+            color: #020c1b;
+            box-shadow: 0 0 35px rgba(0, 180, 216, 0.7);
+            cursor: pointer;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: rgba(2, 12, 27, 0.95);
+            color: #8892b0;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.85rem;
+            margin-top: auto;
+            border-top: 1px solid rgba(0, 180, 216, 0.15);
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Elemento do vídeo de fundo -->
+    <video class="video-background" autoplay loop muted playsinline>
+        <source src="video.mp4" type="video/mp4">
+        Seu navegador não suporta vídeos HTML5.
+    </video>
+    
+    <div class="video-overlay"></div>
+
+    <header>
+        <h1>CONECTIVIDADE CENTRAL</h1>
+        <p>Monitoramento e Acesso a Dispositivos de Rede</p>
+    </header>
+
+    <div class="container">
+        <div class="vitrine-lista">
+
+	    <div class="linha-link">
+                <h2 class="link-title">Village</h2>
+                <a href="https://45.7.164.6:22081" target="_blank" class="link-btn">Conectar</a>
+            </div>
+            
+            <div class="linha-link">
+                <h2 class="link-title">Nativo</h2>
+                <a href="https://172.24.31.2" target="_blank" class="link-btn">Conectar</a>
+            </div>
+
+            <div class="linha-link">
+                <h2 class="link-title">Meleira</h2>
+                <a href="https://172.23.2.2" target="_blank" class="link-btn">Conectar</a>
+            </div>
+
+            <div class="linha-link">
+                <h2 class="link-title">Coxi</h2>
+                <a href="https://172.23.35.6" target="_blank" class="link-btn">Conectar</a>
+            </div>
+
+            <div class="linha-link">
+                <h2 class="link-title">Palmitinho</h2>
+                <a href="https://172.23.31.2" target="_blank" class="link-btn">Conectar</a>
+            </div>
+
+            <div class="linha-link">
+                <h2 class="link-title">Degredo</h2>
+                <a href="https://172.23.30.2" target="_blank" class="link-btn">Conectar</a>
+            </div>
+
+            <div class="linha-link">
+                <h2 class="link-title">Lajinha</h2>
+                <a href="https://10.5.31.6" target="_blank" class="link-btn">Conectar</a>
+            </div>
+
+            <div class="linha-link">
+                <h2 class="link-title">Valdisio Barbosa</h2>
+                <a href="https://172.23.15.6" target="_blank" class="link-btn">Conectar</a>
+            </div>
+
+            <div class="linha-link">
+                <h2 class="link-title">Juerana A</h2>
+                <a href="https://172.23.35.2" target="_blank" class="link-btn">Conectar</a>
+            </div>
+
+            <div class="linha-link">
+                <h2 class="link-title">Juncado</h2>
+                <a href="https://172.23.34.2" target="_blank" class="link-btn">Conectar</a>
+            </div>
+
+            <div class="linha-link">
+                <h2 class="link-title">Fatima</h2>
+                <a href="https://172.23.32.2" target="_blank" class="link-btn">Conectar</a>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>Life Internet &copy; 2026</p>
+    </footer>
+
+</body>
+</html>
