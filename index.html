@@ -5,18 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <title>Painel de Telecom - Links Rápidos</title> 
   <style> 
-    body { 
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-      margin: 0; 
-      padding: 0; 
-      display: flex; 
-      flex-direction: column; 
-      min-height: 100vh; 
-      color: #e6f1ff; 
-      background-color: #030a16; 
-      position: relative; 
-      overflow-x: hidden; 
-    } 
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: #e6f1ff;
+  /* ALTERADO: Corrigida para a mesma cor de fundo do primeiro site */
+  background-color: #020813; 
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ALTERADO: Ocultamos a camada azul que distorcia a cor e o brilho original do vídeo */
+.video-overlay {
+  display: none;
+}
+
     .video-background { 
       position: fixed; 
       top: 0; 
