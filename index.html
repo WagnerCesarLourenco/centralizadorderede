@@ -348,35 +348,6 @@ body {
     </div> 
   </div> 
   <footer> <p>Life Internet 2026</p> </footer> 
-  <script> 
-    function monitorarPainel() { 
-      const linhas = document.querySelectorAll('.linha-link'); 
-      linhas.forEach(linha => { 
-        const botaoLink = linha.querySelector('.link-btn'); 
-        const ledStatus = linha.querySelector('.tech-status-dot'); 
-        const textoTitulo = linha.querySelector('.tech-title'); 
-        if (!botaoLink || !ledStatus || !textoTitulo) return; 
-        const urlOriginal = botaoLink.getAttribute('href'); 
-        function realizarPing() { 
-          const img = new Image(); 
-          const timeout = setTimeout(() => { img.src = ""; definirOffline(); }, 3000); 
-          img.onload = img.onerror = function() { 
-            clearTimeout(timeout); 
-            ledStatus.className = 'tech-status-dot dot-online'; 
-            textoTitulo.innerText = 'SISTEMA ATIVO'; 
-          }; 
-          img.src = `${urlOriginal}/favicon.ico?t=${Date.now()}`; 
-        } 
-        function definirOffline() { 
-          ledStatus.className = 'tech-status-dot dot-offline'; 
-          textoTitulo.innerText = 'SISTEMA CAÍDO'; 
-        } 
-        realizarPing(); 
-        setInterval(realizarPing, 5000); 
-      }); 
-    } 
-    document.addEventListener('DOMContentLoaded', monitorarPainel); 
-  </script> 
+  
 </body> 
 </html>
-
